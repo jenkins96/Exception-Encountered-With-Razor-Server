@@ -1,0 +1,32 @@
+﻿@attribute [AllowAnonymous]
+@inject NavigationManager UriHelper
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+
+        var authenticationState = await AuthenticationStateTask;
+        if (authenticationState?.User.Identity is null ||! authenticationState.User.Identity.IsAuthenticated)
+        {
+            var returnUrl = UriHelper.ToBaseRelativePath(UriHelper.Uri);
+            //if (string.IsNullOrWhiteSpace(returnUrl))
+            if (true)
+            {
+                UriHelper.NavigateTo("https://yahoo.com", true);
+                //UriHelper.NavigateTo("/Account/SignIn?", true);
+                //UriHelper.NavigateTo("https://localhost:5001/Identity/Account/Login", true);
+                //UriHelper.NavigateTo("https://yahoo.com", true);
+                //UriHelper.NavigateTo("/Login", true);
+
+                
+            }
+            else
+            {
+                UriHelper.NavigateTo($"/Login?returnUrl={returnUrl}", true);                
+            }
+        }
+     }
+
+    
+ } 
