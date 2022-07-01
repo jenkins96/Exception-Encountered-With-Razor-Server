@@ -45,3 +45,4 @@ at Microsoft.AspNetCore.Components.RenderTree.Re
 
 This reminds me of and older similat bug:
 * https://github.com/dotnet/aspnetcore/issues/7665
+[Exceptions encountered when running Razor Components application](https://github.com/dotnet/aspnetcore/issues/7665).
